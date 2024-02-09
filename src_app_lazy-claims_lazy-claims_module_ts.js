@@ -5074,7 +5074,7 @@ function ClaimsComponent_ng_template_825_tr_22_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵpropertyInterpolate"]("id", assts_r486.id);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵproperty"]("checked", ctx_r483.selected_associates.includes(assts_r486.id))("ngModel", assts_r486.isChecked);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtextInterpolate2"](" ", assts_r486.firstname, " ", assts_r486.lastname, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtextInterpolate3"](" ", assts_r486.firstname, " ", assts_r486.lastname, "- AM", assts_r486.id, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtextInterpolate"](assts_r486.assigned_claims);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵadvance"](1);
@@ -5157,7 +5157,7 @@ function ClaimsComponent_ng_template_825_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelement"](20, "th");
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](21, "tbody");
-    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtemplate"](22, ClaimsComponent_ng_template_825_tr_22_Template, 11, 10, "tr", 179);
+    _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵtemplate"](22, ClaimsComponent_ng_template_825_tr_22_Template, 11, 11, "tr", 179);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementEnd"]()()()();
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵelementStart"](23, "div", 204)(24, "span", 396)(25, "button", 397);
     _angular_core__WEBPACK_IMPORTED_MODULE_14__["ɵɵlistener"]("click", function ClaimsComponent_ng_template_825_Template_button_click_25_listener() {
