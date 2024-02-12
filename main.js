@@ -17377,7 +17377,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const environment = {
   production: false,
-  name: 'dev',
+  name: 'development',
   apiUrl: 'http://35.222.109.4/resolv_v2_build/backend/public/index.php/api'
 };
 
