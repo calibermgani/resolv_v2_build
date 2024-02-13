@@ -794,9 +794,11 @@ class CreateworkorderController extends Controller
                 $assigned_count = Import_field::where('assigned_to', $associates['id'])->where('claim_Status', 'Assigned')->orWhere('claim_Status', 'Client Assistance')->count();
                 $assign_limit = User_work_profile::where('user_id', $associates['id'])->orderBy('id', 'desc')->first();
 
-                $users[$i]['assigned_claims'] = $assigned_count ? $assigned_count : 0;
-                $users[$i]['assign_limit'] = $assign_limit['claim_assign_limit'];
-                $i++;
+                if(!empty($assigned_count) &&  !empty($assign_limit['claim_assign_limit'])){
+                    $users[$i]['assigned_claims'] = $assigned_count ? $assigned_count : 0;
+                    $users[$i]['assign_limit'] = $assign_limit['claim_assign_limit'];
+                    $i++;
+                    }
             }
 
             return response()->json([
