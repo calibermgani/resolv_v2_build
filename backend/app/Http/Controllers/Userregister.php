@@ -24,10 +24,11 @@ class Userregister extends Controller
 
     public function getroles()
     {
-        dd('Later working');
+        // dd('Later working');
         /*
 try {*/
 
+        // $roles = Role::where('status', 'Active')->get();
         $roles = Role::where('status', 'Active')->get();
 
         // $factory = JWTFactory::customClaims([
@@ -56,7 +57,7 @@ $token = JWTAuth::encode($payload);*/
 
     public function get_user_role()
     {
-        dd('hi Later work');
+        // dd('hi Later work');
         /*
 try {*/
 
