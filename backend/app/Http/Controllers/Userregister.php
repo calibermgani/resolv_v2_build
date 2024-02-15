@@ -128,6 +128,7 @@ $token = JWTAuth::encode($payload);*/
             'login_attempt'     => '0',
             'attempt_updated'   => date('Y-m-d h:i:s'),
             'created_by'        =>  $request->get('user_id'),
+            'updated_by'        =>  $request->get('user_id'),
         ];
 
         //Core DB data Creation
