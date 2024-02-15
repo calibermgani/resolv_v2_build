@@ -122,11 +122,11 @@ $token = JWTAuth::encode($payload);*/
             'lastname'          => $data['lastname'],
             'status'            => 'Active',
             'email'             => 'selva@caliberfocus.com ',
-            'last_login'        => date('Y-m-d h:i:s'),
+            'last_login'        => Carbon::now(),
             'token'             => '0',
             'is_logged_in'      => '0',
             'login_attempt'     => '0',
-            'attempt_updated'   => date('Y-m-d h:i:s'),
+            'attempt_updated'   => Carbon::now(),
             'created_by'        =>  $request->get('user_id'),
             'updated_by'        =>  $request->get('user_id'),
         ];
