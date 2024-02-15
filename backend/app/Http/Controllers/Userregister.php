@@ -230,13 +230,13 @@ $token = JWTAuth::encode($payload);*/
                     // array_push($dbs,\Config::get('database'));
                     // array_push($dbs,\Config::get('database'));
 
-                    // $query = "INSERT INTO `users`(id,role_id,user_name,`password`,user_type,firstname,lastname,`status`,created_by) VALUES ($user_tab_data[id],$user_tab_data[role_id],'$user_tab_data[user_name]','$user_tab_data[password]','$user_tab_data[user_type]','$user_tab_data[firstname]','$user_tab_data[lastname]','$user_tab_data[status]',$user_tab_data[created_by])";
-                    // $data = DB::select($query, ['mysql']);
+                    $query = "INSERT INTO `users`(id,role_id,user_name,email,`password`,user_type,last_login,firstname,lastname,`status`,token,login_attempt,attempt_updated,created_by,updated_by) VALUES ($user_tab_data[id],$user_tab_data[role_id],'$user_tab_data[user_name]','','$user_tab_data[password]','$user_tab_data[user_type]','0000-00-00 00:00:00','$user_tab_data[firstname]','$user_tab_data[lastname]','$user_tab_data[status]','','0','0000-00-00 00:00:00','0',$user_tab_data[created_by])";
+                    $data = DB::select($query, ['mysql']);
 
-                    // // array_push($dbs,$data);
-                    // $date = date('Y-m-d H:i:s');
-                    // $query_2 = "INSERT INTO `user_work_profiles`(user_id,role_id,claim_assign_limit,caller_benchmark,created_at,created_by) VALUES ($user_core[id], $process[role_id],$process[assign_limit],$process[caller_bench],'$date',$request->get('user_id'))";
-                    // $data_2 = DB::select($query_2, ['mysql']);
+                    // array_push($dbs,$data);
+                    $date = date('Y-m-d H:i:s');
+                    $query_2 = "INSERT INTO `user_work_profiles`(user_id,role_id,claim_assign_limit,caller_benchmark,created_at,created_by) VALUES ($user_core[id], $process[role_id],$process[assign_limit],$process[caller_bench],'$date',$request->get('user_id'))";
+                    $data_2 = DB::select($query_2, ['mysql']);
                     //    array_push($dbs,$data_2);
                 }
             }
