@@ -134,6 +134,7 @@ $token = JWTAuth::encode($payload);*/
 
         //Core DB data Creation
         $user_core = User::on('mysql')->create($user_tab_data);
+        dd($user_core);
         $address = Address_flag::create([
             // 'address_company'      => 'usps',
             // 'type'                 => 'users',
