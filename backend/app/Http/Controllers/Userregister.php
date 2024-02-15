@@ -187,7 +187,7 @@ $token = JWTAuth::encode($payload);*/
 
                 ]);
             }
-
+            dd(1);
             $dbconnection = new DBConnectionController();
             $dbs = [];
 
@@ -242,7 +242,6 @@ $token = JWTAuth::encode($payload);*/
             }
         }
         // \Config::get('database')
-        dd(1);
         return response()->json([
             'data' => $dbs,
             'error' => 'Registration Successful'
