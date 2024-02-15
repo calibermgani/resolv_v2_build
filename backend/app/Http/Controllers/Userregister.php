@@ -114,7 +114,7 @@ $token = JWTAuth::encode($payload);*/
         $process_details = [];
         $data = $request->get('form_data');
 
-        $user_tab_data=[
+        $user_tab_data = [
             'role_id'           => 1,
             'user_name'         => $data['username'],
             'password'          => bcrypt($data['password']),
@@ -122,16 +122,14 @@ $token = JWTAuth::encode($payload);*/
             'firstname'         => $data['firstname'],
             'lastname'          => $data['lastname'],
             'status'            => 'Active',
-            // 'email'             => 'test@123',
-            'last_login'        => now(),
-            // 'token'             => '0',
-            // 'is_logged_in'      => '0',
-            // 'login_attempt'     => '0',
-            // 'attempt_updated'   => '1000-01-01',
-            // 'updated_at'        => '1994-01-01 00:00:00',
-            'created_by'        =>  $request->get('user_id'),
-            // 'updated_by'        => '0',
-            // 'deleted_at'        => '1994-01-01 00:00:00'
+            'email'             => '', // Provide an empty string if email is not available
+            'last_login'        => date('Y-m-d H:i:s'),
+            'token'             => '0',
+            'is_logged_in'      => '0',
+            'login_attempt'     => '0',
+            'attempt_updated'   => date('Y-m-d H:i:s'),
+            'created_by'        => $request->get('user_id'),
+            'updated_by'        => $request->get('user_id'),
         ];
 
         //Core DB data Creation
