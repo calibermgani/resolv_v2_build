@@ -123,11 +123,11 @@ $token = JWTAuth::encode($payload);*/
             'lastname'          => $data['lastname'],
             'status'            => 'Active',
             'email'             => '', // Provide an empty string if email is not available
-            'last_login'        => Carbon::now(),
+            'last_login'        => date('Y-m-d H:i:s'),
             'token'             => '0',
             'is_logged_in'      => '0',
             'login_attempt'     => '0',
-            'attempt_updated'   => Carbon::now(),
+            'attempt_updated'   => date('Y-m-d H:i:s'),
             'created_by'        => $request->get('user_id'),
             'updated_by'        => $request->get('user_id'),
         ];
