@@ -187,7 +187,6 @@ $token = JWTAuth::encode($payload);*/
 
                 ]);
             }
-            dd(1);
             $dbconnection = new DBConnectionController();
             $dbs = [];
 
@@ -232,6 +231,8 @@ $token = JWTAuth::encode($payload);*/
                     // array_push($dbs,\Config::get('database'));
 
                     $query = "INSERT INTO `users`(id,role_id,user_name,`password`,user_type,firstname,lastname,`status`,created_by) VALUES ($user_tab_data[id],$user_tab_data[role_id],'$user_tab_data[user_name]','$user_tab_data[password]','$user_tab_data[user_type]','$user_tab_data[firstname]','$user_tab_data[lastname]','$user_tab_data[status]',$user_tab_data[created_by])";
+
+            dd($query);
                     $data = DB::select($query, ['mysql']);
                     // array_push($dbs,$data);
                     $date = date('Y-m-d H:i:s');
