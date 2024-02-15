@@ -28,8 +28,8 @@ class Userregister extends Controller
         /*
 try {*/
 
-        // $roles = Role::where('status', 'Active')->get();
-        $roles = Role::where('status', 'Active')->get();
+
+        $roles = DB::table('roles')->get();
 
         // $factory = JWTFactory::customClaims([
         //     'sub'   => $roles,
