@@ -122,14 +122,14 @@ $token = JWTAuth::encode($payload);*/
             'firstname'         => $data['firstname'],
             'lastname'          => $data['lastname'],
             'status'            => 'Active',
-            'email'             => '',
+            'email'             => 'selva@gmail.com',
             'last_login'        => Carbon::now(),
             'token'             => '0',
             'is_logged_in'      => '0',
             'login_attempt'     => '0',
             'attempt_updated'   => Carbon::now(),
-            'created_by'        =>  $request->get('user_id'),
-            'updated_by'        =>  $request->get('user_id'),
+            'created_by'        => $request->get('user_id'),
+            'updated_by'        => $request->get('user_id'),
         ];
 
         //Core DB data Creation
