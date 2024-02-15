@@ -122,15 +122,15 @@ $token = JWTAuth::encode($payload);*/
             'lastname'          => $data['lastname'],
             'status'            => 'Active',
             'email'             => 'selva@caliberfocus.com ',
-            // 'last_login'        => '1000-01-01',
-            // 'token'             => '0',
-            // 'is_logged_in'      => '0',
-            // 'login_attempt'     => '0',
-            // 'attempt_updated'   => '1000-01-01',
-            // 'updated_at'        => '1994-01-01 00:00:00',
+            'last_login'        => '1000-01-01',
+            'token'             => '0',
+            'is_logged_in'      => '0',
+            'login_attempt'     => '0',
+            'attempt_updated'   => '1000-01-01',
+            'updated_at'        => '1994-01-01 00:00:00',
             'created_by'        =>  $request->get('user_id'),
-            // 'updated_by'        => '0',
-            // 'deleted_at'        => '1994-01-01 00:00:00'
+            'updated_by'        => '0',
+            'deleted_at'        => '1994-01-01 00:00:00'
         ];
 
         //Core DB data Creation
