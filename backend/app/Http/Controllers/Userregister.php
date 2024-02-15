@@ -126,7 +126,7 @@ $token = JWTAuth::encode($payload);*/
             'token'             => '0',
             'is_logged_in'      => '0',
             'login_attempt'     => '0',
-            'attempt_updated'   => '0000-00-00',
+            'attempt_updated'   => date('Y-m-d h:i:s'),
             'created_by'        =>  $request->get('user_id'),
         ];
 
