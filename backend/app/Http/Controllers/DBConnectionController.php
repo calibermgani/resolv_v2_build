@@ -126,33 +126,61 @@ class DBConnectionController extends Controller
 
     public function connectDB($practice_id)
     {
+
+
         Config::set('database.default', 'mysql2');
 
         $practice_data = Practice::where('id', $practice_id)->first();
+        Artisan::call('config:clear');
+        $config = App::make('config');
 
-        if(isset($practice_data)){
-            Artisan::call('config:clear');
-            $config = App::make('config');
+        $connections = $config->get('database.connections');
+        // $defaultConnection = $connections[$config->get('database.default')];
+        $defaultConnection = $connections['mysql'];
 
-            $connections = $config->get('database.connections');
-            // $defaultConnection = $connections[$config->get('database.default')];
-            $defaultConnection = $connections['mysql'];
+        $newConnection = $defaultConnection;
+        $newConnection['database'] = $practice_data['practice_db_id'];
 
-            $newConnection = $defaultConnection;
-            $newConnection['database'] = $practice_data['practice_db_id']; //second database name;
+        App::make('config')->set('database.connections.' . 'mysql', $newConnection);
 
-            App::make('config')->set('database.connections.' . 'mysql', $newConnection);
+        # \Log::info(\Config::get('database'));
 
-            DB::connection('mysql')->reconnect();
-            Config::set('database.default', 'mysql');
-            // Log::info("Default :" . DB::connection()->getDatabaseName());
+        DB::connection('mysql')->reconnect();
+        Config::set('database.default', 'mysql');
+        Log::info("Default :" . DB::connection()->getDatabaseName());
 
 
-            $connections = DB::connection()->getDatabaseName();
-            // Log::info("Here DB " . $connections);
-            // $connections = $config->get('database.connections');
+        // $connections = DB::connection()->getDatabaseName();
+        // Log::info("Here DB " . $connections);
+        // // $connections = $config->get('database.connections');
 
-        }
+        // Config::set('database.default', 'mysql2');
+
+        // $practice_data = Practice::where('id', $practice_id)->first();
+
+        // if(isset($practice_data)){
+        //     Artisan::call('config:clear');
+        //     $config = App::make('config');
+
+        //     $connections = $config->get('database.connections');
+        //     // $defaultConnection = $connections[$config->get('database.default')];
+        //     $defaultConnection = $connections['mysql'];
+
+        //     $newConnection = $defaultConnection;
+        //     $newConnection['database'] = $practice_data['practice_db_id']; //second database name;
+
+        //     App::make('config')->set('database.connections.' . 'mysql', $newConnection);
+
+        //     DB::connection('mysql')->reconnect();
+        //     Config::set('database.default', 'mysql');
+        //     // Log::info("Default :" . DB::connection()->getDatabaseName());
+
+
+        //     $connections = DB::connection()->getDatabaseName();
+        //     // Log::info("Here DB " . $connections);
+        //     // $connections = $config->get('database.connections');
+
+        // }
     }
 
 
