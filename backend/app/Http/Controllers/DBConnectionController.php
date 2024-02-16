@@ -135,12 +135,12 @@ class DBConnectionController extends Controller
             $config = App::make('config');
 
             $connections = $config->get('database.connections');
-            dd($connections);
             // $defaultConnection = $connections[$config->get('database.default')];
             $defaultConnection = $connections['mysql'];
 
             $newConnection = $defaultConnection;
             $newConnection['database'] = $practice_data['practice_db_id']; //second database name;
+            dd($newConnection);
 
             App::make('config')->set('database.connections.' . 'mysql', $newConnection);
 
@@ -150,7 +150,6 @@ class DBConnectionController extends Controller
 
 
             $connections = DB::connection()->getDatabaseName();
-            dd($connections);
             // Log::info("Here DB " . $connections);
             // $connections = $config->get('database.connections');
 
