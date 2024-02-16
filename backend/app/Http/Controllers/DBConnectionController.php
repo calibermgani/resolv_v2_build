@@ -129,7 +129,6 @@ class DBConnectionController extends Controller
         Config::set('database.default', 'mysql2');
 
         $practice_data = Practice::where('id', $practice_id)->first();
-        dd($practice_data);
 
         if(isset($practice_data)){
             Artisan::call('config:clear');
@@ -150,6 +149,7 @@ class DBConnectionController extends Controller
 
 
             $connections = DB::connection()->getDatabaseName();
+            dd($connections);
             // Log::info("Here DB " . $connections);
             // $connections = $config->get('database.connections');
 
