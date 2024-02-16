@@ -230,8 +230,27 @@ $token = JWTAuth::encode($payload);*/
                     // array_push($dbs,\Config::get('database'));
                     // array_push($dbs,\Config::get('database'));
 
-                    $query = "INSERT INTO `users`(id,role_id,user_name,email,`password`,user_type,last_login,firstname,lastname,`status`,token,login_attempt,attempt_updated,created_by,updated_by) VALUES ($user_tab_data[id],$user_tab_data[role_id],'$user_tab_data[user_name]','','$user_tab_data[password]','$user_tab_data[user_type]','1970-01-01 00:00:01','$user_tab_data[firstname]','$user_tab_data[lastname]','$user_tab_data[status]','','0','1970-01-01 00:00:01',$user_tab_data[created_by],'0')";
-                    $data = DB::select($query, ['mysql']);
+                    $query = "INSERT INTO `users` (id, role_id, user_name, email, `password`, user_type, last_login, firstname, lastname, `status`, token, login_attempt, attempt_updated, created_by, updated_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+                    $values = [
+                        $user_tab_data['id'],
+                        $user_tab_data['role_id'],
+                        $user_tab_data['user_name'],
+                        '',
+                        $user_tab_data['password'],
+                        $user_tab_data['user_type'],
+                        '1970-01-01 00:00:01',
+                        $user_tab_data['firstname'],
+                        $user_tab_data['lastname'],
+                        $user_tab_data['status'],
+                        '',
+                        '0',
+                        '1970-01-01 00:00:01',
+                        $user_tab_data['created_by'],
+                        '0'
+                    ];
+
+                    DB::insert($query, $values);
 
                     // array_push($dbs,$data);
                     $date = date('Y-m-d H:i:s');
