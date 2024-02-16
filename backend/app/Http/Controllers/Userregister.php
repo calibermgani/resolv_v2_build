@@ -191,7 +191,6 @@ $token = JWTAuth::encode($payload);*/
             $dbs = [];
 
             foreach ($process_details as $process) {
-                dump($process);
                 //Process For practive DB
                 if ($process['practice_id'] != null) {
 
@@ -208,9 +207,9 @@ $token = JWTAuth::encode($payload);*/
                     // array_push($dbs,\DB::connection('name'));
 
                     // array_push($dbs,$db);
-                    dd(\Config::get('database'),DB::connection()->getDatabaseName());
+                    // dd(\Config::get('database'),DB::connection()->getDatabaseName());
                     $db =  $dbconnection->connectDB($process['practice_id']);
-                    dump($db);
+                    dd($db);
                     //      $user=User::on('mysql')->create($user_tab_data);
 
                     //      $work_profile=User_work_profile::on('mysql')->create([
@@ -234,7 +233,6 @@ $token = JWTAuth::encode($payload);*/
 
                     $query = "INSERT INTO `users`(id,role_id,user_name,email,`password`,user_type,last_login,firstname,lastname,`status`,token,login_attempt,attempt_updated,created_by,updated_by) VALUES ($user_tab_data[id],$user_tab_data[role_id],'$user_tab_data[user_name]','','$user_tab_data[password]','$user_tab_data[user_type]','1970-01-01 00:00:01','$user_tab_data[firstname]','$user_tab_data[lastname]','$user_tab_data[status]','','0','1970-01-01 00:00:01',$user_tab_data[created_by],'0')";
                     $data = DB::select($query, ['mysql']);
-                    dd($data);
 
                     // array_push($dbs,$data);
                     $date = date('Y-m-d H:i:s');
