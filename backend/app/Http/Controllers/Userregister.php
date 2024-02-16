@@ -191,6 +191,7 @@ $token = JWTAuth::encode($payload);*/
             $dbs = [];
 
             foreach ($process_details as $process) {
+                dump($process);
                 //Process For practive DB
                 if ($process['practice_id'] != null) {
 
