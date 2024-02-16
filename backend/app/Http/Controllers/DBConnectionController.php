@@ -135,6 +135,7 @@ class DBConnectionController extends Controller
             $config = App::make('config');
 
             $connections = $config->get('database.connections');
+            dd($connections);
             // $defaultConnection = $connections[$config->get('database.default')];
             $defaultConnection = $connections['mysql'];
 
