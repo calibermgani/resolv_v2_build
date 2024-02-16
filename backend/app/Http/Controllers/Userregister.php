@@ -208,7 +208,7 @@ $token = JWTAuth::encode($payload);*/
                     // array_push($dbs,\DB::connection('name'));
 
                     // array_push($dbs,$db);
-                    // dd(\Config::get('database'),DB::connection()->getDatabaseName());
+                    dd(\Config::get('database'),DB::connection()->getDatabaseName());
                     $db =  $dbconnection->connectDB($process['practice_id']);
                     dump($db);
                     //      $user=User::on('mysql')->create($user_tab_data);
