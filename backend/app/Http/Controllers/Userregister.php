@@ -440,7 +440,6 @@ $token = JWTAuth::encode($payload);*/
 
             $query = "SELECT * FROM users WHERE `users`.`id` = $id";
             $checkExists = DB::select($query);
-            dd(1);
             // if(sizeOf($checkExists) > 1)
             // {
             //     dd($checkExists);
@@ -450,12 +449,27 @@ $token = JWTAuth::encode($payload);*/
             if (sizeOf($checkExists) >= 1) {
                 $date = date('Y-m-d H:i:s');
                 //For User
-                $query = "UPDATE `users` SET `user_name`='$user_data[username]',`role_id` = '$process[role_id]',`firstname`='$user_data[firstname]',`lastname`='$user_data[lastname]',`updated_by`=$upd_id,`updated_at` = '$date' WHERE `users`.`id` = $id;";
-                $data = DB::select($query, ['mysql']);
+                $query = "UPDATE `users` SET `user_name` = ?, `role_id` = ?, `firstname` = ?, `lastname` = ?, `updated_by` = ?, `updated_at` = ? WHERE `users`.`id` = ?";
+                $data = DB::update($query, [
+                    $user_data['username'],
+                    $process['role_id'],
+                    $user_data['firstname'],
+                    $user_data['lastname'],
+                    $upd_id,
+                    $date,
+                    $id
+                ]);
 
                 //For Practice
-                $query = "UPDATE `user_work_profiles` SET `role_id`='$process[role_id]',`claim_assign_limit`=$process[assign_limit],`caller_benchmark` = '$process[caller_bench]',`updated_at` = '$date',`updated_by` = '$upd_id' WHERE `user_work_profiles`.`id` = $process[upd_id];";
-                $data = DB::select($query, ['mysql']);
+                $query = "UPDATE `user_work_profiles` SET `role_id` = ?, `claim_assign_limit` = ?, `caller_benchmark` = ?, `updated_at` = ?, `updated_by` = ? WHERE `user_work_profiles`.`id` = ?";
+                $data = DB::update($query, [
+                    $process['role_id'],
+                    $process['assign_limit'],
+                    $process['caller_bench'],
+                    $date,
+                    $upd_id,
+                    $process['upd_id']
+                ]);
             } else {
                 $query = "INSERT INTO `users`(id,role_id,user_name,`password`,user_type,firstname,lastname,`status`,created_by) VALUES ($id,$process[role_id],'$user_data[username]','JUNiQl3mWRm2SSw00Zx0L','Practice','$user_data[firstname]','$user_data[lastname]','Active',$upd_id)";
                 $data = DB::select($query, ['mysql']);
