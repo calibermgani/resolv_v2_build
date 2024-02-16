@@ -86,7 +86,7 @@ class PracticeController extends Controller
             $practice_list = Practice::all();
         } else {
             $practice_assigned = User_work_profile::where('user_id', $user_id)->get();
-
+            dd($practice_assigned);
             foreach ($practice_assigned as $practice) {
 
                 if(isset($practice['practice_id'])){
@@ -100,7 +100,6 @@ class PracticeController extends Controller
                 $unaAssignedClaims = Import_field::where('claim_Status', Null)->count();
                 $auditClaims = Import_field::where('claim_Status', 'Audit')->orWhere('claim_Status', 'Auditing')->where('claim_closing', '<>', 1)->count();
                 $closedClaims = Import_field::where('claim_closing', 1)->orWhere('claim_Status', 'Closed')->count();
-                    dump($practice_data);
                 $practice_data[0]['total_count'] = $totalCount;
                 $practice_data[0]['assigned_count'] = $assignedClaims;
                 $practice_data[0]['unassigned_count'] = $unaAssignedClaims;
