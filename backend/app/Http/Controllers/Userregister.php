@@ -435,13 +435,12 @@ $token = JWTAuth::encode($payload);*/
         $user_data = $data;
         $dbconnection = new DBConnectionController();
         $dbs = [];
-        dd(1);
         foreach ($process_details as $process) {
             $db =  $dbconnection->connectDB($process['practice_id']);
 
-            $query = "SELECT * FROM users WHERE `users`.`id` = $id; ";
-            $checkExists = DB::select($query, ['mysql']);
-
+            $query = "SELECT * FROM users WHERE `users`.`id` = $id";
+            $checkExists = DB::select($query);
+            dd(1);
             // if(sizeOf($checkExists) > 1)
             // {
             //     dd($checkExists);
