@@ -85,7 +85,7 @@ class PracticeController extends Controller
         if ($user_role->role_name == 'Administrator') {
             $practice_list = Practice::all();
         } else {
-
+            dd(2);
             $practice_assigned = User_work_profile::where('user_id', $user_id)->get();
 
             foreach ($practice_assigned as $practice) {
