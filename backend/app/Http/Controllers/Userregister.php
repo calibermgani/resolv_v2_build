@@ -471,12 +471,29 @@ $token = JWTAuth::encode($payload);*/
                     $process['upd_id']
                 ]);
             } else {
-                $query = "INSERT INTO `users`(id,role_id,user_name,`password`,user_type,firstname,lastname,`status`,created_by) VALUES ($id,$process[role_id],'$user_data[username]','JUNiQl3mWRm2SSw00Zx0L','Practice','$user_data[firstname]','$user_data[lastname]','Active',$upd_id)";
-                $data = DB::select($query, ['mysql']);
+                $query = "INSERT INTO `users` (id, role_id, user_name, `password`, user_type, firstname, lastname, `status`, created_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $data = DB::insert($query, [
+                    $id,
+                    $process['role_id'],
+                    $user_data['username'],
+                    'JUNiQl3mWRm2SSw00Zx0L',
+                    'Practice',
+                    $user_data['firstname'],
+                    $user_data['lastname'],
+                    'Active',
+                    $upd_id
+                ]);
                 // array_push($dbs,$data);
                 $date = date('Y-m-d H:i:s');
-                $query_2 = "INSERT INTO `user_work_profiles`(user_id,role_id,claim_assign_limit,caller_benchmark,created_at,created_by) VALUES ($id, $process[role_id],$process[assign_limit],$process[caller_bench],'$date',$upd_id)";
-                $data_2 = DB::select($query_2, ['mysql']);
+                $query_2 = "INSERT INTO `user_work_profiles` (user_id, role_id, claim_assign_limit, caller_benchmark, created_at, created_by) VALUES (?, ?, ?, ?, ?, ?)";
+                $data_2 = DB::insert($query_2, [
+                    $id,
+                    $process['role_id'],
+                    $process['assign_limit'],
+                    $process['caller_bench'],
+                    $date,
+                    $upd_id
+                ]);
             }
         }
 
