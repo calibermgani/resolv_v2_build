@@ -85,13 +85,13 @@ class PracticeController extends Controller
         if ($user_role->role_name == 'Administrator') {
             $practice_list = Practice::all();
         } else {
-            dd(2);
             $practice_assigned = User_work_profile::where('user_id', $user_id)->get();
 
             foreach ($practice_assigned as $practice) {
 
                 if(isset($practice['practice_id'])){
                 $practice_data = Practice::where('id', $practice['practice_id'])->get();
+                dd($practice_data);
 
                 $practiceDbConnection = new DBConnectionController();
                 $practiceDbConnection->connectDB($practice['practice_id']);
