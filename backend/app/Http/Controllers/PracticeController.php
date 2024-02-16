@@ -100,7 +100,7 @@ class PracticeController extends Controller
                 $unaAssignedClaims = Import_field::where('claim_Status', Null)->count();
                 $auditClaims = Import_field::where('claim_Status', 'Audit')->orWhere('claim_Status', 'Auditing')->where('claim_closing', '<>', 1)->count();
                 $closedClaims = Import_field::where('claim_closing', 1)->orWhere('claim_Status', 'Closed')->count();
-                    dd($practice_data);
+                    dump($practice_data);
                 $practice_data[0]['total_count'] = $totalCount;
                 $practice_data[0]['assigned_count'] = $assignedClaims;
                 $practice_data[0]['unassigned_count'] = $unaAssignedClaims;
