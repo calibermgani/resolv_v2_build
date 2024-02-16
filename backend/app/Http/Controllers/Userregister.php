@@ -254,7 +254,7 @@ $token = JWTAuth::encode($payload);*/
 
                     // array_push($dbs,$data);
                     $date = date('Y-m-d H:i:s');
-                    $query_2 = "INSERT INTO `user_work_profiles`(user_id,role_id,claim_assign_limit,caller_benchmark,created_at,created_by) VALUES ($user_core[id], $process[role_id],$process[assign_limit],$process[caller_bench],'$date',$request->get('user_id'))";
+                    $query_2 = "INSERT INTO `user_work_profiles`(user_id,role_id,claim_assign_limit,caller_benchmark,created_at,created_by) VALUES ($user_core[id], $process[role_id],$process[assign_limit],$process[caller_bench],'$date','$user_tab_data[created_by]'";
                     $data_2 = DB::select($query_2, ['mysql']);
                     //    array_push($dbs,$data_2);
                 }
