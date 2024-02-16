@@ -86,7 +86,7 @@ class PracticeController extends Controller
             $practice_list = Practice::all();
         } else {
             $practice_assigned = User_work_profile::where('user_id', $user_id)->get();
-            dd($practice_assigned);
+            // dd($practice_assigned);
             foreach ($practice_assigned as $practice) {
 
                 if(isset($practice['practice_id'])){
