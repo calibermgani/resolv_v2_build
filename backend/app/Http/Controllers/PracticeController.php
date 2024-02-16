@@ -91,12 +91,12 @@ class PracticeController extends Controller
 
                 if(isset($practice['practice_id'])){
                 $practice_data = Practice::where('id', $practice['practice_id'])->get();
-                dd($practice_data);
 
                 $practiceDbConnection = new DBConnectionController();
                 $practiceDbConnection->connectDB($practice['practice_id']);
 
                 $totalCount =  Import_field::count();
+                dd($totalCount);
                 $assignedClaims = Import_field::where('claim_Status', 'Assigned')->count();
                 $unaAssignedClaims = Import_field::where('claim_Status', Null)->count();
                 $auditClaims = Import_field::where('claim_Status', 'Audit')->orWhere('claim_Status', 'Auditing')->where('claim_closing', '<>', 1)->count();
