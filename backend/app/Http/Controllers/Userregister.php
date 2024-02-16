@@ -335,13 +335,14 @@ $token = JWTAuth::encode($payload);*/
 
 
         //For Core DB
-        User::where('id', $id)->update(array(
-            'user_name'         => $data['username'],
-            'firstname'         => $data['firstname'],
-            'lastname'          => $data['lastname'],
-            'updated_by'        => $upd_id,
-            'updated_at'        => date('Y-m-d H:i:s')
-        ));
+        $user = User::where('id', $id)->first();
+        $user->user_name = $data['username'];
+        $user->firstname = $data['firstname'];
+        $user->lastname = $data['lastname'];
+        $user->updated_by = $upd_id;
+        $user->updated_at = date('Y-m-d H:i:s');
+
+        $user->save();
 
 
         // ----Not IN Use
