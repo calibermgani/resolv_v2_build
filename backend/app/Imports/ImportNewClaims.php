@@ -117,7 +117,7 @@ class ImportNewClaims implements ToCollection, WithHeadingRow
                                 $val[$field] = $val[$field];
                             }
                         }
-                        dump($val[$field]);
+                        dump($index_ip, $val[$field]);
                     }
                 }
 
