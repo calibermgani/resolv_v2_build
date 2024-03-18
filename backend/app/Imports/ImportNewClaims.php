@@ -116,7 +116,8 @@ class ImportNewClaims implements ToCollection, WithHeadingRow
                             else{
                                 $val[$field] = $val[$field];
                             }
-                            }
+                        }
+                        // dump($val['claim_no'], $val[$field]);
                     }
                 }
 
