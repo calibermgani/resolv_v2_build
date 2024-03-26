@@ -448,8 +448,9 @@ class CreateworkorderController extends Controller
                     $claim_data[$key]['created_ats'] = date('m/d/Y', strtotime($claim_data[$key]['created_ats']));
                 }
             }
+            $sortedData = collect($claim_data)->sortByDesc('touch')->values()->all();
 
-            $op_data['datas'] = $claim_data;
+            $op_data['datas'] = $sortedData;
 
             return response()->json([
                 'data' => $op_data,
